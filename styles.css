@@ -58,11 +58,11 @@ button { color: inherit; font: inherit; }
 .circle-arrow { font-size: 1rem; }
 .hero-card { padding: .75rem; color: var(--ink); background: var(--acid); transform: rotate(1.5deg); }
 .portrait-frame { position: relative; aspect-ratio: .8; overflow: hidden; background: #171918; }
-.portrait-grid { position: absolute; inset: 0; opacity: .25; background-image: linear-gradient(rgba(199,255,69,.3) 1px, transparent 1px), linear-gradient(90deg, rgba(199,255,69,.3) 1px, transparent 1px); background-size: 24px 24px; transform: perspective(300px) rotateX(55deg) scale(1.5); transform-origin: bottom; }
-.portrait-frame::before, .portrait-frame::after { content: ""; position: absolute; border-radius: 50%; filter: blur(4px); }
-.portrait-frame::before { width: 180px; height: 180px; left: 50%; top: 22%; transform: translateX(-50%); border: 1px solid rgba(199,255,69,.5); box-shadow: 0 0 50px rgba(199,255,69,.12); }
-.portrait-frame::after { width: 130px; height: 230px; left: 50%; bottom: -30%; transform: translateX(-50%); background: var(--paper); opacity: .85; }
-.portrait-initials { position: absolute; z-index: 2; left: 50%; top: 40%; transform: translate(-50%,-50%); color: var(--acid); font-size: 4rem; font-weight: 800; letter-spacing: -.1em; }
+.portrait-photo { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: saturate(.88) contrast(1.04); transition: transform .6s cubic-bezier(.2,.65,.25,1), filter .6s ease; }
+.hero-card:hover .portrait-photo { transform: scale(1.035); filter: saturate(1) contrast(1.03); }
+.portrait-grid { position: absolute; z-index: 1; inset: 48% 0 0; opacity: .16; pointer-events: none; background-image: linear-gradient(rgba(199,255,69,.35) 1px, transparent 1px), linear-gradient(90deg, rgba(199,255,69,.35) 1px, transparent 1px); background-size: 24px 24px; -webkit-mask-image: linear-gradient(transparent, #000); mask-image: linear-gradient(transparent, #000); }
+.portrait-frame::before { content: ""; position: absolute; z-index: 2; inset: 0; pointer-events: none; background: linear-gradient(180deg, transparent 62%, rgba(17,19,18,.28)); }
+.portrait-frame::after { content: ""; position: absolute; z-index: 3; inset: .6rem; pointer-events: none; border: 1px solid rgba(199,255,69,.32); }
 .portrait-label { position: absolute; z-index: 3; right: .8rem; top: .8rem; color: var(--acid); font: 400 .55rem var(--mono); writing-mode: vertical-rl; }
 .hero-card-footer { display: flex; justify-content: space-between; align-items: end; padding: .9rem .35rem .25rem; }
 .hero-card-footer span { display: block; font: .55rem var(--mono); text-transform: uppercase; opacity: .65; }
@@ -180,7 +180,7 @@ button { color: inherit; font: inherit; }
   .site-nav.open { opacity: 1; visibility: visible; }
   .hero { padding-top: 140px; }
   .hero-grid { grid-template-columns: 1fr; }
-  .hero-card { display: none; }
+  .hero-card { display: block; justify-self: end; width: min(300px, 78vw); margin-top: 1rem; }
   .section-heading { grid-template-columns: 1fr; }
   .section-heading > p:last-child { max-width: 500px; }
   .project, .experience-grid { grid-template-columns: 1fr; }
@@ -194,6 +194,7 @@ button { color: inherit; font: inherit; }
   .site-header { height: 90px; }
   .brand-role { display: none; }
   .hero h1 { font-size: clamp(3rem, 14.3vw, 5rem); }
+  .hero-card { width: min(235px, 72vw); }
   .hero-bottom { align-items: flex-start; gap: 2rem; flex-direction: column; }
   .circle-link { width: 90px; height: 90px; }
   .hero-kicker { align-self: flex-start; }
